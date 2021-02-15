@@ -1,0 +1,12 @@
+---
+
+azure_resource_groups:
+   - name: "Main-RG"
+     location: "West Europe"
+     tags:
+        - name: "environment"
+          value: "prod"
+        - name: "costcenter"
+          value: "engineering"
+         
+
