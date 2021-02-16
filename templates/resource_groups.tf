@@ -1,6 +1,6 @@
-{%- if azure_resource_groups is defined %}
+{%- if azurerm_resource_groups is defined %}
 
-{% for item in azure_resource_groups %}
+{% for item in azurerm_resource_groups %}
 
 resource "azurerm_resource_group" "{{ item.name }}" {
   name     = "{{ item.name }}"
@@ -12,6 +12,6 @@ resource "azurerm_resource_group" "{{ item.name }}" {
 {% endfor %}
    }
 {% endif %}
+}
 {% endfor %}
 {% endif %}
-}

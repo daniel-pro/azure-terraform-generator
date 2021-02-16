@@ -1,6 +1,6 @@
 ---
 
-azure_resource_groups:
+azurerm_resource_groups:
    - name: "Main-RG"
      location: "West Europe"
      tags:
@@ -9,4 +9,54 @@ azure_resource_groups:
         - name: "costcenter"
           value: "engineering"
          
+azurerm_virtual_networks:
+   - name: "Main-VNet"
+     resource_group: "Main-RG"
+     address_space:
+      - 10.1.0.0/16
+      - 10.10.0.0/16
+     dns_servers:
+      - 1.1.1.1
+      - 8.8.8.8
+      - 8.8.4.4
+     subnets:
+      - name: "Main-VNet-Subnet01"
+        address_prefix: 10.1.0.0/24
+        security_group: "Main-SG"
+      - name: "GatewaySubnet"
+        address_prefix: 10.10.255.224/27
+     tags:
+        - name: "environment"
+          value: "prod"
+        - name: "costcenter"
+          value: "engineering"
+
+azurerm_network_security_groups:
+   - name: "Main-SG"
+     resource_group: "Main-RG"
+     security_rules:
+       - name: "Main-SG-secrule01"
+         priority: 100
+         direction: "Inbound" 
+         access: "Allow"
+         protocol: "Tcp"
+         source_port_range: "*" 
+         destination_port_range: "*"
+         source_address_prefix: "10.0.0.0/24"
+         destination_address_prefix: "10.1.0.0/16"
+       - name: "Main-SG-secrule02"
+         priority: 101
+         direction: "Inbound" 
+         access: "Allow"
+         protocol: "Tcp"
+         source_port_range: "*" 
+         destination_port_range: "*"
+         source_address_prefix: "10.0.0.0/24"
+         destination_address_prefix: "10.10.0.0/16"
+
+     tags:
+        - name: "environment"
+          value: "prod"
+        - name: "costcenter"
+          value: "engineering"
 
