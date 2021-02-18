@@ -110,3 +110,31 @@ azurerm_virtual_network_gateway_connections:
         - name: "costcenter"
           value: "engineering"
 
+azurerm_linux_virtual_machines:
+   - name: "LNXVM01"
+     resource_group: "Main-RG"
+     nics:
+        - name: "vnic0"
+          ip_configurations:
+             - virtual_network: "Main-VNet"
+               subnet: "Main-VNet-Subnet01"
+          enable_ip_forwarding: "false"
+          enable_accelerated_networking: "true"
+     size: "Standard_DS1_v2"
+     username: "azuser"
+     public_key_file: "~/.ssh/id_rsa.pub"
+     disable_password_authenitication: "true"
+     storage_image_reference_publisher: "Canonical"
+     storage_image_reference_offer: "UbuntuServer"
+     storage_image_reference_sku: "16.04-LTS"
+     storage_image_reference_version: "latest"
+     os_disk_name: "LNXVM01-OSDSK1"
+     os_disk_caching: "ReadWrite"
+     os_disk_create_option: "FromImage"
+     os_disk_storage_account_type: "Standard_LRS"
+     tags:
+        - name: "environment"
+          value: "prod"
+        - name: "costcenter"
+          value: "engineering"
+
