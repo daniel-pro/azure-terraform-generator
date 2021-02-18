@@ -36,7 +36,7 @@ if __name__ == '__main__':
                         format='%(asctime)s [%(name)-9s] [%(levelname)-8s]'
                                '- %(message)s',
                         datefmt='%Y-%m-%d %H:%M')
-    logger = logging.getLogger('genOCItfcli')
+    logger = logging.getLogger('genAZtfcli')
 
     main_parser = subparsers.add_parser('gentf')
     main_parser.add_argument('input_yaml', help='YAML file contaning the'
