@@ -120,7 +120,7 @@ azurerm_virtual_network_gateway_connections:
 azurerm_linux_virtual_machines:
    - name: "LNXVM01"
      resource_group: "Main-RG"
-     nics:
+     vnics:
         - name: "vnic0"
           ip_configurations:
              - virtual_network: "Main-VNet"
@@ -131,14 +131,14 @@ azurerm_linux_virtual_machines:
      username: "azuser"
      public_key_file: "~/.ssh/id_rsa.pub"
      disable_password_authenitication: "true"
-     storage_image_reference_publisher: "Canonical"
-     storage_image_reference_offer: "UbuntuServer"
-     storage_image_reference_sku: "16.04-LTS"
-     storage_image_reference_version: "latest"
+     source_image_reference_publisher: "Canonical"
+     source_image_reference_offer: "UbuntuServer"
+     source_image_reference_sku: "16.04-LTS"
+     source_image_reference_version: "latest"
      os_disk_name: "LNXVM01-OSDSK1"
      os_disk_caching: "ReadWrite"
-     os_disk_create_option: "FromImage"
      os_disk_storage_account_type: "Standard_LRS"
+     os_disk_disk_size_gb: 50
      tags:
         - name: "environment"
           value: "prod"

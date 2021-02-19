@@ -7,7 +7,7 @@ resource "azurerm_subnet" "{{ item.virtual_network }}-{{ item.name }}" {
   virtual_network_name = azurerm_virtual_network.{{ item.virtual_network }}.name
   address_prefixes     = [
 {% for address_prefix in item.address_prefixes %}
-                          {{ address_prefix }},
+                          "{{ address_prefix }}",
 {% endfor %}
                          ]
 }
