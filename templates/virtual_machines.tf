@@ -46,7 +46,7 @@ resource "azurerm_linux_virtual_machine" "{{ item.name }}" {
 
   admin_username = "{{ item.username }}"
 
-{% if disable_password_authenitication == 'true' %}
+{% if item.disable_password_authenitication == 'true' %}
   admin_ssh_key {
     username   = "{{ item.username }}"
     public_key = file("{{ item.public_key_file }}")

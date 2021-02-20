@@ -67,26 +67,26 @@ azurerm_network_security_groups:
         - name: "costcenter"
           value: "engineering"
 
-azurerm_virtual_network_gateways:
-   - name: "VPN-GW01"
-     resource_group: "Main-RG"
-     active_active: "true"
-     type: "Vpn" # or "ExpressRoute"
-     vpn_type: "RouteBased" # or "PolicyBased"
-     sku: "VpnGw1" # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway#sku
-     generation: "Generation1"
-     enable_bgp: "true"
-     bgp_settings:
-        - asn: 64512
-          peering_address: 169.254.21.11 # from 169.254.21.0 to 169.254.22.255
-          peer_weight: 1
-     subnet: "GatewaySubnet"
-     virtual_network: "Main-VNet"
-     tags:
-        - name: "environment"
-          value: "prod"
-        - name: "costcenter"
-          value: "engineering"
+#azurerm_virtual_network_gateways:
+#   - name: "VPN-GW01"
+#     resource_group: "Main-RG"
+#     active_active: "true"
+#     type: "Vpn" # or "ExpressRoute"
+#     vpn_type: "RouteBased" # or "PolicyBased"
+#     sku: "VpnGw1" # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway#sku
+#     generation: "Generation1"
+#     enable_bgp: "true"
+#     bgp_settings:
+#        - asn: 64512
+#          peering_address: 169.254.21.11 # from 169.254.21.0 to 169.254.22.255
+#          peer_weight: 1
+#     subnet: "GatewaySubnet"
+#     virtual_network: "Main-VNet"
+#     tags:
+#        - name: "environment"
+#          value: "prod"
+#        - name: "costcenter"
+#          value: "engineering"
 
 azurerm_local_network_gateways:
    - name: "ONPREM-GW01"
@@ -104,18 +104,18 @@ azurerm_local_network_gateways:
         - name: "costcenter"
           value: "engineering"
 
-azurerm_virtual_network_gateway_connections:
-   - name: "VPN-GW01_ONPREM-GW01_CONN01"
-     resource_group: "Main-RG"
-     type     : "IPsec"
-     virtual_network_gateway: "VPN-GW01"
-     local_network_gateway: "ONPREM-GW01"
-     shared_key: "abcdefghijklmnopqrstuvwxyz1234567890"
-     tags:
-        - name: "environment"
-          value: "prod"
-        - name: "costcenter"
-          value: "engineering"
+#azurerm_virtual_network_gateway_connections:
+#   - name: "VPN-GW01_ONPREM-GW01_CONN01"
+#     resource_group: "Main-RG"
+#     type     : "IPsec"
+#     virtual_network_gateway: "VPN-GW01"
+#     local_network_gateway: "ONPREM-GW01"
+#     shared_key: "abcdefghijklmnopqrstuvwxyz1234567890"
+#     tags:
+#        - name: "environment"
+#          value: "prod"
+#        - name: "costcenter"
+#          value: "engineering"
 
 azurerm_linux_virtual_machines:
    - name: "LNXVM01"
