@@ -37,13 +37,26 @@ azurerm_subnets:
      resource_group: "Main-RG"
      virtual_network: "Main-VNet" 
 
+azurerm_subnet_network_security_group_associations:
+   - virtual_network: "Main-VNet"
+     subnet: "Main-VNet-Subnet01"
+     network_security_group: "Main-SG" 
 
 azurerm_network_security_groups:
    - name: "Main-SG"
      resource_group: "Main-RG"
      security_rules:
-       - name: "Main-SG-secrule01"
+       - name: "Main-SG-ssh-access"
          priority: 100
+         direction: "Inbound" 
+         access: "Allow"
+         protocol: "Tcp"
+         source_port_range: "*" 
+         destination_port_range: "22"
+         source_address_prefix: "0.0.0.0/0"
+         destination_address_prefix: "10.1.0.0/16"
+       - name: "Main-SG-secrule01"
+         priority: 101
          direction: "Inbound" 
          access: "Allow"
          protocol: "Tcp"
@@ -52,7 +65,7 @@ azurerm_network_security_groups:
          source_address_prefix: "10.0.0.0/24"
          destination_address_prefix: "10.1.0.0/16"
        - name: "Main-SG-secrule02"
-         priority: 101
+         priority: 102
          direction: "Inbound" 
          access: "Allow"
          protocol: "Tcp"
