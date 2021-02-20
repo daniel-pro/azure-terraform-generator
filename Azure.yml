@@ -67,6 +67,16 @@ azurerm_network_security_groups:
         - name: "costcenter"
           value: "engineering"
 
+azurerm_public_ips:
+   - name: "LNXVM01-PUBIP01"
+     resource_group: "Main-RG"
+     allocation_method: "Dynamic"
+     tags:
+        - name: "environment"
+          value: "prod"
+        - name: "costcenter"
+          value: "engineering"
+
 #azurerm_virtual_network_gateways:
 #   - name: "VPN-GW01"
 #     resource_group: "Main-RG"
@@ -125,6 +135,7 @@ azurerm_linux_virtual_machines:
           ip_configurations:
              - virtual_network: "Main-VNet"
                subnet: "Main-VNet-Subnet01"
+               public_ip_address_name: "LNXVM01-PUBIP01"
           enable_ip_forwarding: "false"
           enable_accelerated_networking: "true"
      size: "Standard_DS1_v2"

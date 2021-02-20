@@ -12,6 +12,9 @@ resource "azurerm_network_interface" "{{ item.name }}-{{ vnic.name }}" {
     name                          = "{{ vnic.name }}-ipconf{{ loop.index }}"
     subnet_id                     = azurerm_subnet.{{ ip_configuration.virtual_network }}-{{ ip_configuration.subnet }}.id
     private_ip_address_allocation = "Dynamic"
+{% if ip_configuration.public_ip_address_name is defined %}
+    public_ip_address_id          = azurerm_public_ip.{{ ip_configuration.public_ip_address_name }}.id
+{% endif %}
   }
 {% endfor %}
 
