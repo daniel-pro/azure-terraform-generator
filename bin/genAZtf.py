@@ -3,7 +3,7 @@ Created on Feb 24, 2020
 @author: Daniel Procopio
 @summary: This program invokes the class that generates a config file
           from a jinja2 template and a YAML config file to generate
-          appropriate Terraform files for OCI
+          appropriate Terraform files for Azure
 @version: 1.0
 '''
 
