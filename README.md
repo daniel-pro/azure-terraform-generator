@@ -1,1 +1,1 @@
-# azure-terraform-jinja2-templates
+# azure-terraform-generator
