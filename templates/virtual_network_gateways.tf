@@ -1,11 +1,13 @@
 {%- if azurerm_virtual_network_gateways is defined %}
 {% for item in azurerm_virtual_network_gateways %}
 
+{% if loop.index < 2 %}
 data "azurerm_subnet" "{{ item.virtual_network }}-{{ item.subnet }}" {
   name                 = "GatewaySubnet"
   virtual_network_name = azurerm_virtual_network.{{ item.virtual_network }}.name
   resource_group_name  = azurerm_resource_group.{{ item.resource_group }}.name
 }
+{% endif %}
 
 resource "azurerm_public_ip" "{{ item.name }}-pubip01" {
   name                = "{{ item.name }}-pubip01"
